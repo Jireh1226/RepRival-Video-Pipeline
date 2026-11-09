@@ -1,0 +1,1191 @@
+{
+  "exercise_id": "synthetic_pushup",
+  "exercise_name": "SYNTHETIC geometry fixture",
+  "camera_view": "front",
+  "limb_mode": "bilateral",
+  "primary_signal": {
+    "metric": "elbow_depth",
+    "direction": "up",
+    "description": "Normalized elbow bend depth (0=extended, 1=fully bent) - increases at bottom of movement"
+  },
+  "depth_thresholds": {
+    "signal": "elbow_depth",
+    "depth_good": 0.9951,
+    "depth_acceptable": 0.9951,
+    "depth_minimum": 0.9951,
+    "rom_minimum": 0.8352,
+    "top_threshold": 0.116,
+    "observed_range": [
+      0.9951,
+      0.9951
+    ],
+    "observed_top_range": [
+      0.1148,
+      0.116
+    ],
+    "description": "top_threshold defines 'returned to top' position (avoids enforcing joint lockout). ROM is measured from top_threshold to bottom depth."
+  },
+  "tempo_thresholds": {
+    "observed": {
+      "eccentric_min_ms": 1000,
+      "eccentric_max_ms": 1000,
+      "concentric_min_ms": 1000,
+      "concentric_max_ms": 1000,
+      "total_min_ms": 2000,
+      "total_max_ms": 2000,
+      "eccentric_range_ms": [
+        1000,
+        1000
+      ],
+      "concentric_range_ms": [
+        1000,
+        1000
+      ],
+      "description": "Raw threshold values extracted from video analysis (p10/p90 percentiles)"
+    },
+    "favorable_buffers": {
+      "eccentric_min_buffer_ms": -150,
+      "eccentric_max_buffer_ms": 400,
+      "concentric_min_buffer_ms": -150,
+      "concentric_max_buffer_ms": 400,
+      "total_min_buffer_ms": -150,
+      "total_max_buffer_ms": 600,
+      "description": "Buffers applied to observed thresholds. Negative on min = more lenient for 'too fast'. Positive on max = more lenient for 'too slow'."
+    },
+    "final": {
+      "eccentric_min_ms": 850,
+      "eccentric_max_ms": 1400,
+      "concentric_min_ms": 850,
+      "concentric_max_ms": 1400,
+      "total_min_ms": 1850,
+      "total_max_ms": 2600,
+      "description": "Final enforcement thresholds = observed + favorable_buffers"
+    },
+    "ideal": {
+      "eccentric_min_ms": 1000,
+      "eccentric_max_ms": 1000,
+      "description": "Ideal tempo range for praise feedback (middle 50% of observed)"
+    }
+  },
+  "velocity_thresholds": {
+    "v_enter": 0.02,
+    "v_exit": 0.01,
+    "depth_ema": 0.25,
+    "velocity_ema": 0.25
+  },
+  "stability_thresholds": {
+    "left_knee_angle": {
+      "baseline": 180.0,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Left Knee Angle",
+      "feedback": {
+        "cue_short": "Straighten left leg",
+        "cue_detailed": "Keep your left leg straight",
+        "severity": "minor"
+      }
+    },
+    "right_knee_angle": {
+      "baseline": 180.0,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Right Knee Angle",
+      "feedback": {
+        "cue_short": "Straighten right leg",
+        "cue_detailed": "Keep your right leg straight",
+        "severity": "minor"
+      }
+    },
+    "avg_knee_angle": {
+      "baseline": 180.0,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Avg Knee Angle",
+      "feedback": {
+        "cue_short": "Straighten legs",
+        "cue_detailed": "Keep your legs straight - avoid bending at the knees",
+        "severity": "moderate"
+      }
+    },
+    "torso_angle": {
+      "baseline": 180.0,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Forward/backward lean angle",
+      "feedback": {
+        "cue_short": "Back straight",
+        "cue_detailed": "Keep your spine neutral - avoid excessive forward lean",
+        "severity": "moderate"
+      }
+    },
+    "upper_arm_angle_left": {
+      "baseline": 0.0,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Upper Arm Angle Left",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your upper arm  left",
+        "severity": "minor"
+      }
+    },
+    "upper_arm_angle_right": {
+      "baseline": 0.0,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Upper Arm Angle Right",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your upper arm  right",
+        "severity": "minor"
+      }
+    },
+    "thigh_angle_left": {
+      "baseline": 0.0,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Thigh Angle Left",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your thigh  left",
+        "severity": "minor"
+      }
+    },
+    "thigh_angle_right": {
+      "baseline": 0.0,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Thigh Angle Right",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your thigh  right",
+        "severity": "minor"
+      }
+    },
+    "shoulder_asymmetry_normalized": {
+      "baseline": 0.0,
+      "max_deviation": 0.02,
+      "observed_std": 0.0,
+      "description": "Shoulder Asymmetry Normalized",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your shoulder a normalized",
+        "severity": "minor"
+      }
+    },
+    "hip_asymmetry_normalized": {
+      "baseline": 0.0,
+      "max_deviation": 0.02,
+      "observed_std": 0.0,
+      "description": "Hip rotation/tilt (normalized by hip width, for shoulder tap)",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your hip a normalized",
+        "severity": "minor"
+      }
+    },
+    "knee_depth": {
+      "baseline": 0.0,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Knee Depth",
+      "feedback": {
+        "cue_short": "Legs straight",
+        "cue_detailed": "Keep your legs extended - avoid bending your knees",
+        "severity": "moderate"
+      }
+    },
+    "torso_z": {
+      "baseline": 0.0,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Torso Z",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your torso z",
+        "severity": "minor"
+      }
+    },
+    "shoulder_z": {
+      "baseline": 0.0,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Shoulder Z",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your shoulder z",
+        "severity": "minor"
+      }
+    },
+    "hip_z": {
+      "baseline": 0.0,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Hip Z",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your hip z",
+        "severity": "minor"
+      }
+    },
+    "elbow_z": {
+      "baseline": 0.0,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Elbow Z",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your elbow z",
+        "severity": "minor"
+      }
+    },
+    "knee_z": {
+      "baseline": 0.0,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Knee Z",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your knee z",
+        "severity": "minor"
+      }
+    },
+    "nose_x": {
+      "baseline": 0.5,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Nose X",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your nose x",
+        "severity": "minor"
+      }
+    },
+    "nose_relative_x": {
+      "baseline": 0.0,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Nose Relative X",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your nose relative x",
+        "severity": "minor"
+      }
+    },
+    "elbow_angle_difference": {
+      "baseline": 0.0,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Elbow Angle Difference",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your elbow  difference",
+        "severity": "minor"
+      }
+    },
+    "elbow_bend_bias": {
+      "baseline": 0.0,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Elbow Bend Bias",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your elbow bend bias",
+        "severity": "minor"
+      }
+    },
+    "left_hip_angle": {
+      "baseline": 171.8699,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Left Hip Angle",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your left hip",
+        "severity": "minor"
+      }
+    },
+    "right_hip_angle": {
+      "baseline": 171.8699,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Right Hip Angle",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your right hip",
+        "severity": "minor"
+      }
+    },
+    "avg_hip_angle": {
+      "baseline": 171.8699,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Avg Hip Angle",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your avg hip",
+        "severity": "minor"
+      }
+    },
+    "hip_height": {
+      "baseline": 0.65,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Hip Height",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your hip height",
+        "severity": "minor"
+      }
+    },
+    "shoulder_height": {
+      "baseline": 0.3,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Shoulder Height",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your shoulder height",
+        "severity": "minor"
+      }
+    },
+    "nose_height": {
+      "baseline": 0.15,
+      "max_deviation": 0.0,
+      "observed_std": 0.0,
+      "description": "Nose Height",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your nose height",
+        "severity": "minor"
+      }
+    },
+    "left_shoulder_angle": {
+      "baseline": 8.1301,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Left Shoulder Angle",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your left shoulder",
+        "severity": "minor"
+      }
+    },
+    "right_shoulder_angle": {
+      "baseline": 8.1301,
+      "max_deviation": 5.0,
+      "observed_std": 0.0,
+      "description": "Right Shoulder Angle",
+      "feedback": {
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your right shoulder",
+        "severity": "minor"
+      }
+    }
+  },
+  "ratio_thresholds": {
+    "hand_width_ratio": {
+      "observed": {
+        "baseline": 0.3327,
+        "min": 0.0001,
+        "max": 0.8226,
+        "description": "Raw values extracted from video analysis"
+      },
+      "favorable_buffers": {
+        "min_buffer_percent": -0.1,
+        "max_buffer_percent": 0.15,
+        "description": "Percentage-based buffers applied to baseline. Negative on min = allows narrower. Positive on max = allows wider."
+      },
+      "final": {
+        "acceptable_range": [
+          -0.0332,
+          0.8725
+        ],
+        "description": "Final enforcement thresholds = observed \u00b1 (baseline \u00d7 buffer_percent)"
+      },
+      "ideal": {
+        "ideal_range": [
+          0.0266,
+          0.6535
+        ],
+        "description": "Ideal range for praise feedback (middle 50% of observed)"
+      },
+      "metric_description": "Hand spacing relative to shoulders (front view)",
+      "feedback": {
+        "too_wide": {
+          "cue_short": "Hands closer",
+          "cue_detailed": "Bring your hands in slightly",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "cue_short": "Hands wider",
+          "cue_detailed": "Widen your hand placement",
+          "severity": "minor"
+        }
+      }
+    },
+    "hand_spread_ratio": {
+      "observed": {
+        "baseline": 0.2852,
+        "min": 0.0001,
+        "max": 0.7051,
+        "description": "Raw values extracted from video analysis"
+      },
+      "favorable_buffers": {
+        "min_buffer_percent": -0.1,
+        "max_buffer_percent": 0.15,
+        "description": "Percentage-based buffers applied to baseline. Negative on min = allows narrower. Positive on max = allows wider."
+      },
+      "final": {
+        "acceptable_range": [
+          -0.0284,
+          0.7479
+        ],
+        "description": "Final enforcement thresholds = observed \u00b1 (baseline \u00d7 buffer_percent)"
+      },
+      "ideal": {
+        "ideal_range": [
+          0.0228,
+          0.5601
+        ],
+        "description": "Ideal range for praise feedback (middle 50% of observed)"
+      },
+      "metric_description": "Hand spacing relative to torso (side view)",
+      "feedback": {
+        "too_wide": {
+          "cue_short": "Hands closer",
+          "cue_detailed": "Your hands are too far apart - bring them closer",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "cue_short": "Hands wider",
+          "cue_detailed": "Spread your hands further apart",
+          "severity": "minor"
+        }
+      }
+    },
+    "stance_width_ratio": {
+      "observed": {
+        "baseline": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "description": "Raw values extracted from video analysis"
+      },
+      "favorable_buffers": {
+        "min_buffer_percent": -0.1,
+        "max_buffer_percent": 0.15,
+        "description": "Percentage-based buffers applied to baseline. Negative on min = allows narrower. Positive on max = allows wider."
+      },
+      "final": {
+        "acceptable_range": [
+          0.9,
+          1.15
+        ],
+        "description": "Final enforcement thresholds = observed \u00b1 (baseline \u00d7 buffer_percent)"
+      },
+      "ideal": {
+        "ideal_range": [
+          1.0,
+          1.0
+        ],
+        "description": "Ideal range for praise feedback (middle 50% of observed)"
+      },
+      "metric_description": "Foot spacing relative to hips",
+      "feedback": {
+        "too_wide": {
+          "cue_short": "Feet closer",
+          "cue_detailed": "Your stance is too wide - bring feet in",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "cue_short": "Feet wider",
+          "cue_detailed": "Widen your stance for better stability",
+          "severity": "minor"
+        }
+      }
+    },
+    "elbow_flare_ratio": {
+      "observed": {
+        "baseline": 4938.0742,
+        "min": 1.2157,
+        "max": 8593.4083,
+        "description": "Raw values extracted from video analysis"
+      },
+      "favorable_buffers": {
+        "min_buffer_percent": -0.1,
+        "max_buffer_percent": 0.15,
+        "description": "Percentage-based buffers applied to baseline. Negative on min = allows narrower. Positive on max = allows wider."
+      },
+      "final": {
+        "acceptable_range": [
+          -492.5917,
+          9334.1194
+        ],
+        "description": "Final enforcement thresholds = observed \u00b1 (baseline \u00d7 buffer_percent)"
+      },
+      "ideal": {
+        "ideal_range": [
+          1.5303,
+          37.6508
+        ],
+        "description": "Ideal range for praise feedback (middle 50% of observed)"
+      },
+      "metric_description": "Elbow width relative to hands",
+      "feedback": {
+        "too_wide": {
+          "cue_short": "Elbows in",
+          "cue_detailed": "Tuck your elbows closer to your body",
+          "severity": "moderate"
+        },
+        "too_narrow": {
+          "cue_short": "Elbows out",
+          "cue_detailed": "Allow your elbows to flare slightly",
+          "severity": "minor"
+        }
+      }
+    },
+    "hip_elevation_ratio": {
+      "observed": {
+        "baseline": 1.1667,
+        "min": 1.1667,
+        "max": 1.1667,
+        "description": "Raw values extracted from video analysis"
+      },
+      "favorable_buffers": {
+        "min_buffer_percent": -0.1,
+        "max_buffer_percent": 0.15,
+        "description": "Percentage-based buffers applied to baseline. Negative on min = allows narrower. Positive on max = allows wider."
+      },
+      "final": {
+        "acceptable_range": [
+          1.05,
+          1.3417
+        ],
+        "description": "Final enforcement thresholds = observed \u00b1 (baseline \u00d7 buffer_percent)"
+      },
+      "ideal": {
+        "ideal_range": [
+          1.1667,
+          1.1667
+        ],
+        "description": "Ideal range for praise feedback (middle 50% of observed)"
+      },
+      "metric_description": "Hip Elevation Ratio",
+      "feedback": {
+        "too_wide": {
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your hip elevation position is too wide",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your hip elevation position is too narrow",
+          "severity": "minor"
+        }
+      }
+    },
+    "stagger_offset_ratio": {
+      "observed": {
+        "baseline": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "description": "Raw values extracted from video analysis"
+      },
+      "favorable_buffers": {
+        "min_buffer_percent": -0.1,
+        "max_buffer_percent": 0.15,
+        "description": "Percentage-based buffers applied to baseline. Negative on min = allows narrower. Positive on max = allows wider."
+      },
+      "final": {
+        "acceptable_range": [
+          0.0,
+          0.0
+        ],
+        "description": "Final enforcement thresholds = observed \u00b1 (baseline \u00d7 buffer_percent)"
+      },
+      "ideal": {
+        "ideal_range": [
+          0.0,
+          0.0
+        ],
+        "description": "Ideal range for praise feedback (middle 50% of observed)"
+      },
+      "metric_description": "Front-to-back hand offset relative to torso",
+      "feedback": {
+        "too_wide": {
+          "cue_short": "Less stagger",
+          "cue_detailed": "Your hands are too far apart front-to-back",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "cue_short": "More stagger",
+          "cue_detailed": "Offset your hands more front-to-back",
+          "severity": "minor"
+        }
+      }
+    },
+    "forearm_to_upper_arm_ratio_left": {
+      "observed": {
+        "baseline": 0.75,
+        "min": 0.75,
+        "max": 0.75,
+        "description": "Raw values extracted from video analysis"
+      },
+      "favorable_buffers": {
+        "min_buffer_percent": -0.1,
+        "max_buffer_percent": 0.15,
+        "description": "Percentage-based buffers applied to baseline. Negative on min = allows narrower. Positive on max = allows wider."
+      },
+      "final": {
+        "acceptable_range": [
+          0.675,
+          0.8625
+        ],
+        "description": "Final enforcement thresholds = observed \u00b1 (baseline \u00d7 buffer_percent)"
+      },
+      "ideal": {
+        "ideal_range": [
+          0.75,
+          0.75
+        ],
+        "description": "Ideal range for praise feedback (middle 50% of observed)"
+      },
+      "metric_description": "Left forearm/upper arm length ratio (perspective-based elbow position)",
+      "feedback": {
+        "too_wide": {
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your forearm to upper arm left position is too wide",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your forearm to upper arm left position is too narrow",
+          "severity": "minor"
+        }
+      }
+    },
+    "forearm_to_upper_arm_ratio_right": {
+      "observed": {
+        "baseline": 0.75,
+        "min": 0.75,
+        "max": 0.75,
+        "description": "Raw values extracted from video analysis"
+      },
+      "favorable_buffers": {
+        "min_buffer_percent": -0.1,
+        "max_buffer_percent": 0.15,
+        "description": "Percentage-based buffers applied to baseline. Negative on min = allows narrower. Positive on max = allows wider."
+      },
+      "final": {
+        "acceptable_range": [
+          0.675,
+          0.8625
+        ],
+        "description": "Final enforcement thresholds = observed \u00b1 (baseline \u00d7 buffer_percent)"
+      },
+      "ideal": {
+        "ideal_range": [
+          0.75,
+          0.75
+        ],
+        "description": "Ideal range for praise feedback (middle 50% of observed)"
+      },
+      "metric_description": "Right forearm/upper arm length ratio (perspective-based elbow position)",
+      "feedback": {
+        "too_wide": {
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your forearm to upper arm right position is too wide",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your forearm to upper arm right position is too narrow",
+          "severity": "minor"
+        }
+      }
+    },
+    "avg_forearm_to_upper_arm_ratio": {
+      "observed": {
+        "baseline": 0.75,
+        "min": 0.75,
+        "max": 0.75,
+        "description": "Raw values extracted from video analysis"
+      },
+      "favorable_buffers": {
+        "min_buffer_percent": -0.1,
+        "max_buffer_percent": 0.15,
+        "description": "Percentage-based buffers applied to baseline. Negative on min = allows narrower. Positive on max = allows wider."
+      },
+      "final": {
+        "acceptable_range": [
+          0.675,
+          0.8625
+        ],
+        "description": "Final enforcement thresholds = observed \u00b1 (baseline \u00d7 buffer_percent)"
+      },
+      "ideal": {
+        "ideal_range": [
+          0.75,
+          0.75
+        ],
+        "description": "Ideal range for praise feedback (middle 50% of observed)"
+      },
+      "metric_description": "Avg forearm/upper arm ratio (>1.0 = elbows back, ~1.0 = elbows flare)",
+      "feedback": {
+        "too_wide": {
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your avg forearm to upper arm position is too wide",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your avg forearm to upper arm position is too narrow",
+          "severity": "minor"
+        }
+      }
+    }
+  },
+  "distance_reference": {
+    "torso_z_mean": 0.0,
+    "torso_z_range": [
+      0.0,
+      0.0
+    ],
+    "shoulder_z_mean": 0.0,
+    "hip_z_mean": 0.0,
+    "description": "Reference Z values from training video. MediaPipe Z: negative = closer to camera, positive = further. Use to scale thresholds based on user distance.",
+    "elbow_z_mean": 0.0,
+    "knee_z_mean": 0.0
+  },
+  "confidence_thresholds": {
+    "min_arms_confidence": 0.4,
+    "min_legs_confidence": 0.4,
+    "min_elbow_confidence": 0.5,
+    "min_knee_confidence": 0.5,
+    "min_frame_confidence": 0.5,
+    "description": "Minimum landmark visibility to trust frame data"
+  },
+  "feedback": {
+    "exercise_id": "synthetic_pushup",
+    "depth_feedback": {
+      "insufficient_depth": {
+        "violation_type": "depth",
+        "trigger": "insufficient_depth",
+        "cue_short": "Go deeper",
+        "cue_detailed": "Increase your range of motion - go deeper",
+        "severity": "major"
+      },
+      "insufficient_rom": {
+        "violation_type": "depth",
+        "trigger": "insufficient_rom",
+        "cue_short": "Full range",
+        "cue_detailed": "Complete the full range of motion",
+        "severity": "moderate"
+      },
+      "excessive_depth": {
+        "violation_type": "depth",
+        "trigger": "excessive_depth",
+        "cue_short": "Not so deep",
+        "cue_detailed": "You may be going too deep - maintain control",
+        "severity": "minor"
+      }
+    },
+    "tempo_feedback": {
+      "eccentric_too_fast": {
+        "violation_type": "tempo",
+        "trigger": "eccentric_too_fast",
+        "cue_short": "Slow down",
+        "cue_detailed": "Control the lowering phase - don't drop",
+        "severity": "moderate"
+      },
+      "eccentric_too_slow": {
+        "violation_type": "tempo",
+        "trigger": "eccentric_too_slow",
+        "cue_short": "Keep moving",
+        "cue_detailed": "Maintain smooth continuous movement down",
+        "severity": "minor"
+      },
+      "concentric_too_fast": {
+        "violation_type": "tempo",
+        "trigger": "concentric_too_fast",
+        "cue_short": "Control it",
+        "cue_detailed": "Don't rush - maintain control throughout",
+        "severity": "minor"
+      },
+      "concentric_too_slow": {
+        "violation_type": "tempo",
+        "trigger": "concentric_too_slow",
+        "cue_short": "Drive up",
+        "cue_detailed": "Push through - you're stalling",
+        "severity": "minor"
+      },
+      "rep_too_fast": {
+        "violation_type": "tempo",
+        "trigger": "rep_too_fast",
+        "cue_short": "Slow down",
+        "cue_detailed": "Take your time - quality over speed",
+        "severity": "moderate"
+      },
+      "rep_too_slow": {
+        "violation_type": "tempo",
+        "trigger": "rep_too_slow",
+        "cue_short": "Pick up pace",
+        "cue_detailed": "Maintain a steady rhythm",
+        "severity": "minor"
+      }
+    },
+    "stability_feedback": {
+      "left_knee_angle": {
+        "violation_type": "stability",
+        "trigger": "left_knee_angle_deviation",
+        "cue_short": "Straighten left leg",
+        "cue_detailed": "Keep your left leg straight",
+        "severity": "minor"
+      },
+      "right_knee_angle": {
+        "violation_type": "stability",
+        "trigger": "right_knee_angle_deviation",
+        "cue_short": "Straighten right leg",
+        "cue_detailed": "Keep your right leg straight",
+        "severity": "minor"
+      },
+      "avg_knee_angle": {
+        "violation_type": "stability",
+        "trigger": "avg_knee_angle_deviation",
+        "cue_short": "Straighten legs",
+        "cue_detailed": "Keep your legs straight - avoid bending at the knees",
+        "severity": "moderate"
+      },
+      "torso_angle": {
+        "violation_type": "stability",
+        "trigger": "torso_angle_deviation",
+        "cue_short": "Back straight",
+        "cue_detailed": "Keep your spine neutral - avoid excessive forward lean",
+        "severity": "moderate"
+      },
+      "upper_arm_angle_left": {
+        "violation_type": "stability",
+        "trigger": "upper_arm_angle_left_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your upper arm  left",
+        "severity": "minor"
+      },
+      "upper_arm_angle_right": {
+        "violation_type": "stability",
+        "trigger": "upper_arm_angle_right_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your upper arm  right",
+        "severity": "minor"
+      },
+      "thigh_angle_left": {
+        "violation_type": "stability",
+        "trigger": "thigh_angle_left_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your thigh  left",
+        "severity": "minor"
+      },
+      "thigh_angle_right": {
+        "violation_type": "stability",
+        "trigger": "thigh_angle_right_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your thigh  right",
+        "severity": "minor"
+      },
+      "shoulder_asymmetry_normalized": {
+        "violation_type": "stability",
+        "trigger": "shoulder_asymmetry_normalized_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your shoulder a normalized",
+        "severity": "minor"
+      },
+      "hip_asymmetry_normalized": {
+        "violation_type": "stability",
+        "trigger": "hip_asymmetry_normalized_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your hip a normalized",
+        "severity": "minor"
+      },
+      "knee_depth": {
+        "violation_type": "stability",
+        "trigger": "knee_depth_deviation",
+        "cue_short": "Legs straight",
+        "cue_detailed": "Keep your legs extended - avoid bending your knees",
+        "severity": "moderate"
+      },
+      "torso_z": {
+        "violation_type": "stability",
+        "trigger": "torso_z_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your torso z",
+        "severity": "minor"
+      },
+      "shoulder_z": {
+        "violation_type": "stability",
+        "trigger": "shoulder_z_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your shoulder z",
+        "severity": "minor"
+      },
+      "hip_z": {
+        "violation_type": "stability",
+        "trigger": "hip_z_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your hip z",
+        "severity": "minor"
+      },
+      "elbow_z": {
+        "violation_type": "stability",
+        "trigger": "elbow_z_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your elbow z",
+        "severity": "minor"
+      },
+      "knee_z": {
+        "violation_type": "stability",
+        "trigger": "knee_z_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your knee z",
+        "severity": "minor"
+      },
+      "nose_x": {
+        "violation_type": "stability",
+        "trigger": "nose_x_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your nose x",
+        "severity": "minor"
+      },
+      "nose_relative_x": {
+        "violation_type": "stability",
+        "trigger": "nose_relative_x_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your nose relative x",
+        "severity": "minor"
+      },
+      "elbow_angle_difference": {
+        "violation_type": "stability",
+        "trigger": "elbow_angle_difference_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your elbow  difference",
+        "severity": "minor"
+      },
+      "elbow_bend_bias": {
+        "violation_type": "stability",
+        "trigger": "elbow_bend_bias_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your elbow bend bias",
+        "severity": "minor"
+      },
+      "left_hip_angle": {
+        "violation_type": "stability",
+        "trigger": "left_hip_angle_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your left hip",
+        "severity": "minor"
+      },
+      "right_hip_angle": {
+        "violation_type": "stability",
+        "trigger": "right_hip_angle_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your right hip",
+        "severity": "minor"
+      },
+      "avg_hip_angle": {
+        "violation_type": "stability",
+        "trigger": "avg_hip_angle_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your avg hip",
+        "severity": "minor"
+      },
+      "hip_height": {
+        "violation_type": "stability",
+        "trigger": "hip_height_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your hip height",
+        "severity": "minor"
+      },
+      "shoulder_height": {
+        "violation_type": "stability",
+        "trigger": "shoulder_height_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your shoulder height",
+        "severity": "minor"
+      },
+      "nose_height": {
+        "violation_type": "stability",
+        "trigger": "nose_height_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your nose height",
+        "severity": "minor"
+      },
+      "left_shoulder_angle": {
+        "violation_type": "stability",
+        "trigger": "left_shoulder_angle_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your left shoulder",
+        "severity": "minor"
+      },
+      "right_shoulder_angle": {
+        "violation_type": "stability",
+        "trigger": "right_shoulder_angle_deviation",
+        "cue_short": "Hold steady",
+        "cue_detailed": "Maintain stability in your right shoulder",
+        "severity": "minor"
+      }
+    },
+    "ratio_feedback": {
+      "hand_width_ratio": {
+        "too_wide": {
+          "violation_type": "ratio",
+          "trigger": "hand_width_ratio_too_wide",
+          "cue_short": "Hands closer",
+          "cue_detailed": "Bring your hands in slightly",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "violation_type": "ratio",
+          "trigger": "hand_width_ratio_too_narrow",
+          "cue_short": "Hands wider",
+          "cue_detailed": "Widen your hand placement",
+          "severity": "minor"
+        }
+      },
+      "hand_spread_ratio": {
+        "too_wide": {
+          "violation_type": "ratio",
+          "trigger": "hand_spread_ratio_too_wide",
+          "cue_short": "Hands closer",
+          "cue_detailed": "Your hands are too far apart - bring them closer",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "violation_type": "ratio",
+          "trigger": "hand_spread_ratio_too_narrow",
+          "cue_short": "Hands wider",
+          "cue_detailed": "Spread your hands further apart",
+          "severity": "minor"
+        }
+      },
+      "stance_width_ratio": {
+        "too_wide": {
+          "violation_type": "ratio",
+          "trigger": "stance_width_ratio_too_wide",
+          "cue_short": "Feet closer",
+          "cue_detailed": "Your stance is too wide - bring feet in",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "violation_type": "ratio",
+          "trigger": "stance_width_ratio_too_narrow",
+          "cue_short": "Feet wider",
+          "cue_detailed": "Widen your stance for better stability",
+          "severity": "minor"
+        }
+      },
+      "elbow_flare_ratio": {
+        "too_wide": {
+          "violation_type": "ratio",
+          "trigger": "elbow_flare_ratio_too_wide",
+          "cue_short": "Elbows in",
+          "cue_detailed": "Tuck your elbows closer to your body",
+          "severity": "moderate"
+        },
+        "too_narrow": {
+          "violation_type": "ratio",
+          "trigger": "elbow_flare_ratio_too_narrow",
+          "cue_short": "Elbows out",
+          "cue_detailed": "Allow your elbows to flare slightly",
+          "severity": "minor"
+        }
+      },
+      "hip_elevation_ratio": {
+        "too_wide": {
+          "violation_type": "ratio",
+          "trigger": "hip_elevation_ratio_too_wide",
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your hip elevation position is too wide",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "violation_type": "ratio",
+          "trigger": "hip_elevation_ratio_too_narrow",
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your hip elevation position is too narrow",
+          "severity": "minor"
+        }
+      },
+      "stagger_offset_ratio": {
+        "too_wide": {
+          "violation_type": "ratio",
+          "trigger": "stagger_offset_ratio_too_wide",
+          "cue_short": "Less stagger",
+          "cue_detailed": "Your hands are too far apart front-to-back",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "violation_type": "ratio",
+          "trigger": "stagger_offset_ratio_too_narrow",
+          "cue_short": "More stagger",
+          "cue_detailed": "Offset your hands more front-to-back",
+          "severity": "minor"
+        }
+      },
+      "forearm_to_upper_arm_ratio_left": {
+        "too_wide": {
+          "violation_type": "ratio",
+          "trigger": "forearm_to_upper_arm_ratio_left_too_wide",
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your forearm to upper arm left position is too wide",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "violation_type": "ratio",
+          "trigger": "forearm_to_upper_arm_ratio_left_too_narrow",
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your forearm to upper arm left position is too narrow",
+          "severity": "minor"
+        }
+      },
+      "forearm_to_upper_arm_ratio_right": {
+        "too_wide": {
+          "violation_type": "ratio",
+          "trigger": "forearm_to_upper_arm_ratio_right_too_wide",
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your forearm to upper arm right position is too wide",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "violation_type": "ratio",
+          "trigger": "forearm_to_upper_arm_ratio_right_too_narrow",
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your forearm to upper arm right position is too narrow",
+          "severity": "minor"
+        }
+      },
+      "avg_forearm_to_upper_arm_ratio": {
+        "too_wide": {
+          "violation_type": "ratio",
+          "trigger": "avg_forearm_to_upper_arm_ratio_too_wide",
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your avg forearm to upper arm position is too wide",
+          "severity": "minor"
+        },
+        "too_narrow": {
+          "violation_type": "ratio",
+          "trigger": "avg_forearm_to_upper_arm_ratio_too_narrow",
+          "cue_short": "Adjust position",
+          "cue_detailed": "Your avg forearm to upper arm position is too narrow",
+          "severity": "minor"
+        }
+      }
+    }
+  },
+  "metadata": {
+    "learned_from_video": "SYNTHETIC_NO_VIDEO",
+    "reps_analyzed": 9,
+    "avg_confidence": 0.95,
+    "created_at": "2026-11-05T21:12:59.698809",
+    "pipeline_version": "1.0.0",
+    "synthetic_fixture": true,
+    "purpose": "Software demonstration; not an accuracy or form-safety benchmark"
+  }
+}

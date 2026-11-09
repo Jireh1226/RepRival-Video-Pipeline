@@ -1,0 +1,93 @@
+{
+  "checked_on": "2026-11-05",
+  "python": "3.11.14",
+  "environment": "Existing project environment; no fresh installation",
+  "dependencies": {
+    "mediapipe": "0.10.21",
+    "opencv-contrib-python": "4.11.0.86",
+    "numpy": "1.26.4",
+    "scipy": "1.16.3"
+  },
+  "unit_tests": {
+    "run": 7,
+    "passed": 7,
+    "failed": 0,
+    "test_body_seconds": 1.004
+  },
+  "cli_help": {
+    "extract_poses": true,
+    "learn_exercise": true
+  },
+  "synthetic_demo": {
+    "synthetic": true,
+    "input_frames": 601,
+    "primary_signal": "elbow_depth",
+    "detected_segments": 9,
+    "valid_segments": 9,
+    "output_file": "synthetic_thresholds.json",
+    "neural_inference_run": false
+  },
+  "pose_inference": false,
+  "model_training": false,
+  "swift_test_execution": false,
+  "app_store_source_commit_matched": false,
+  "historical_calibration_analyzer": {
+    "status": "passed",
+    "records": 37,
+    "labels": {
+      "bob": 15,
+      "good": 22
+    },
+    "mode": "saved-data numerical summarization",
+    "stderr": "",
+    "video_inference": false,
+    "held_out_accuracy": false
+  },
+  "release_recheck": {
+    "checked_on": "2026-11-08",
+    "python": "3.11.14",
+    "dependencies": {
+      "numpy": "1.26.4",
+      "scipy": "1.16.3",
+      "mediapipe": "0.10.21",
+      "opencv-contrib-python": "4.11.0.86"
+    },
+    "unit_tests": {
+      "run": 7,
+      "passed": 7,
+      "failed": 0
+    },
+    "cli_help": {
+      "extract_poses": true,
+      "learn_exercise": true
+    },
+    "synthetic_demo": {
+      "synthetic": true,
+      "input_frames": 601,
+      "primary_signal": "elbow_depth",
+      "detected_segments": 9,
+      "valid_segments": 9,
+      "output_file": "synthetic_thresholds.json",
+      "neural_inference_run": false
+    },
+    "clean_installation_tested": false,
+    "pose_inference": false,
+    "swift_test_execution": false,
+    "historical_human_data_rerun": false
+  },
+  "standalone_repository_check": {
+    "checked_on": "2026-11-08",
+    "unit_tests": {
+      "run": 7,
+      "passed": 7,
+      "failed": 0
+    },
+    "synthetic_demo": {
+      "input_frames": 601,
+      "valid_segments": 9,
+      "primary_signal": "elbow_depth"
+    },
+    "environment": "Existing Python 3.11 project environment",
+    "implementation_changed": false
+  }
+}

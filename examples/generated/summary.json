@@ -1,0 +1,9 @@
+{
+  "synthetic": true,
+  "input_frames": 601,
+  "primary_signal": "elbow_depth",
+  "detected_segments": 9,
+  "valid_segments": 9,
+  "output_file": "synthetic_thresholds.json",
+  "neural_inference_run": false
+}

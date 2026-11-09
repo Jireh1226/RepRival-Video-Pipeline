@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+outputs/
+.env
+.env.*
+data/
+recordings/
+*.jsonl
+*.mp4
+*.mov
+*.MOV
+*.avi
+*.task
+*.tflite

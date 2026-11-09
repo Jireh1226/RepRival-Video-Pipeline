@@ -1,0 +1,96 @@
+{
+  "prepared_on": "2026-11-05",
+  "source_repository": "https://github.com/Jireh1226/PushUpTracker",
+  "source_head": "e072285ec47686ecc916360d7072272d847432b4",
+  "source_selection_clean_in_git": true,
+  "attribution": "Jireh Katebe designed the complete system, architecture, and workflow; AI assisted implementation. Confirmed by owner November 5, 2026.",
+  "files": [
+    {
+      "original_repository_path": "ThresholdLearner/src/__init__.py",
+      "release_path": "src/__init__.py",
+      "original_sha256": "a62751e5d1c029c18205c39d400ff9f93bacdcf6ecdaa8973c6f80597e4d7616",
+      "release_sha256": "a62751e5d1c029c18205c39d400ff9f93bacdcf6ecdaa8973c6f80597e4d7616",
+      "modified_for_release": false
+    },
+    {
+      "original_repository_path": "ThresholdLearner/src/pose_frame.py",
+      "release_path": "src/pose_frame.py",
+      "original_sha256": "8fabf80da464a9768b7ec7f0fb54fd9f3a58860aa0ca19578687405a86b7dd3e",
+      "release_sha256": "8fabf80da464a9768b7ec7f0fb54fd9f3a58860aa0ca19578687405a86b7dd3e",
+      "modified_for_release": false
+    },
+    {
+      "original_repository_path": "ThresholdLearner/src/video_processor.py",
+      "release_path": "src/video_processor.py",
+      "original_sha256": "f2df820be572242368b66921209282d83482717d9ab7f1a92743baf1743014d4",
+      "release_sha256": "4dcb2414c1eb61266bcb0f73c7d680406c894a0819a3aab63c347ff74da9d371",
+      "modified_for_release": true
+    },
+    {
+      "original_repository_path": "ThresholdLearner/src/metric_calculator.py",
+      "release_path": "src/metric_calculator.py",
+      "original_sha256": "6266f90035c714d697411a4f024f1eea9ab1ff12aab8b6a6696c4b0b7e99119b",
+      "release_sha256": "6266f90035c714d697411a4f024f1eea9ab1ff12aab8b6a6696c4b0b7e99119b",
+      "modified_for_release": false
+    },
+    {
+      "original_repository_path": "ThresholdLearner/src/signal_analyzer.py",
+      "release_path": "src/signal_analyzer.py",
+      "original_sha256": "e0fcd04d5d57931fc69e2b07ea76e05f0d98a46ec21626c25982d2c179eff18f",
+      "release_sha256": "3f6adaf42b1da9e76f9c8b0a7a5d1027377aa60f49e3946f902147b48ffe9d95",
+      "modified_for_release": true
+    },
+    {
+      "original_repository_path": "ThresholdLearner/src/rep_segmenter.py",
+      "release_path": "src/rep_segmenter.py",
+      "original_sha256": "971790c4f66924fc75bc6da109cf6c100523e6a5afe7677e1a1f7c96a665b54b",
+      "release_sha256": "6cad830386342b114cd217c9d7e248aafe8552e4a7f48942d403d48f95205f55",
+      "modified_for_release": true
+    },
+    {
+      "original_repository_path": "ThresholdLearner/src/threshold_learner.py",
+      "release_path": "src/threshold_learner.py",
+      "original_sha256": "f1458c83f0e5b38922f12e35c09634514e191a4884624f04a74d0afe5f5d009c",
+      "release_sha256": "f1458c83f0e5b38922f12e35c09634514e191a4884624f04a74d0afe5f5d009c",
+      "modified_for_release": false
+    },
+    {
+      "original_repository_path": "ThresholdLearner/src/feedback_generator.py",
+      "release_path": "src/feedback_generator.py",
+      "original_sha256": "6b3e2dddb4f086edaf7587407da1f1f7fd9664c27ca7672f0d485c34f5be61e8",
+      "release_sha256": "6b3e2dddb4f086edaf7587407da1f1f7fd9664c27ca7672f0d485c34f5be61e8",
+      "modified_for_release": false
+    },
+    {
+      "original_repository_path": "ThresholdLearner/src/json_exporter.py",
+      "release_path": "src/json_exporter.py",
+      "original_sha256": "9a2229ae3c0fc16916e76d4a7027ac99c5a839bc7e43c32ccae00aff8ae2e1e0",
+      "release_sha256": "9a2229ae3c0fc16916e76d4a7027ac99c5a839bc7e43c32ccae00aff8ae2e1e0",
+      "modified_for_release": false
+    },
+    {
+      "original_repository_path": "ThresholdLearner/learn_exercise.py",
+      "release_path": "learn_exercise.py",
+      "original_sha256": "be323e2c6d0b6d442ada39e1d1bbaa4925c01157bfd0c5f93ba6b1b41de2c4f1",
+      "release_sha256": "465d6caadd5932503741ea94b7b51a7948b1b510a1e22fc2eba5a232983e0ceb",
+      "modified_for_release": true
+    },
+    {
+      "original_repository_path": "PushUpTrackerTests/VideoTestHarness/extract_poses.py",
+      "release_path": "extract_poses.py",
+      "original_sha256": "21f0dd5b0d159dc0c78ac05efe16cc681adf1207b7214d6d983bb3219b95f62a",
+      "release_sha256": "3b95338220c68c9eb5232f2c07b4525ef6866efb5d2a5a2732506be8a4083e1b",
+      "modified_for_release": true
+    },
+    {
+      "original_repository_path": "ThresholdLearner/analysis_scripts/pushups/analyze_rep_calibration.py",
+      "release_path": "analyze_rep_calibration.py",
+      "original_sha256": "e76f73ff41dbf041fc71cf6d6436fd7ef205ef530448b1eb8307ad6a31310133",
+      "release_sha256": "e76f73ff41dbf041fc71cf6d6436fd7ef205ef530448b1eb8307ad6a31310133",
+      "modified_for_release": false
+    }
+  ],
+  "release_status": "Local Git repository prepared on main; not published; no open-source license granted.",
+  "new_files": "README/docs including software requirements, dependency pins, tests, synthetic walkthrough and labeled generated example",
+  "last_packaging_check": "2026-11-08"
+}

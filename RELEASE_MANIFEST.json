@@ -1,0 +1,141 @@
+{
+  "prepared_on": "2026-11-08",
+  "repository": "RepRival-Video-Pipeline",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "9945e4278e197b0873cfea8af8c16d2eb4726cebe13ce1dc30b40a2e09944431",
+      "bytes": 133
+    },
+    {
+      "path": "README.md",
+      "sha256": "a37c9f7ea2a9c92d10209fd1a16d17d98393ca54e1ccd66f592ac811438a41d9",
+      "bytes": 4232
+    },
+    {
+      "path": "SOURCE_PROVENANCE.json",
+      "sha256": "541b45d4ee9acd99a7445a8acdeeb64616cd0d60c4bafd070a5ca5f689cd3368",
+      "bytes": 4981
+    },
+    {
+      "path": "VALIDATION.json",
+      "sha256": "1c24766911aaeda659dbb234f8ee245589153e74a0c3b48a2ae5e901ce0cde64",
+      "bytes": 2280
+    },
+    {
+      "path": "analyze_rep_calibration.py",
+      "sha256": "e76f73ff41dbf041fc71cf6d6436fd7ef205ef530448b1eb8307ad6a31310133",
+      "bytes": 10069
+    },
+    {
+      "path": "docs/DESIGN.md",
+      "sha256": "2e8cce085860f8f7371383e6ee52b723024b8b2c974a330e0398347618be9b6c",
+      "bytes": 3643
+    },
+    {
+      "path": "docs/HISTORICAL_TESTING.md",
+      "sha256": "e7913e5d9589df63e563b699574e2bd39303189337d103bd08daca873bc919ec",
+      "bytes": 2621
+    },
+    {
+      "path": "docs/INTEGRATION.md",
+      "sha256": "3af43444cc742b3e1c30614565195140e11d4bdee3a7c8ba8e6d929f5544c773",
+      "bytes": 4510
+    },
+    {
+      "path": "docs/RELEASE_CHANGES.md",
+      "sha256": "8e812f19fe43d3f3bdd3737baef93585a4786d08292cc585b0ddb61ab17f591f",
+      "bytes": 2840
+    },
+    {
+      "path": "docs/REQUIREMENTS.md",
+      "sha256": "ec3401ed3ee4544bfd4b8934a0045abdef66aa9dc4ab8f3593528c64a52a33c8",
+      "bytes": 3377
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "sha256": "d86ace1410e60970f580d1def469d915164c13894bc05441bb0bd120d919d0f2",
+      "bytes": 3017
+    },
+    {
+      "path": "examples/generated/summary.json",
+      "sha256": "ecc1cd094400cc55ce3ba201950da5bb5a7b3000377617eb80e7f4cf0f7023a0",
+      "bytes": 210
+    },
+    {
+      "path": "examples/generated/synthetic_thresholds.json",
+      "sha256": "40108a18bcc40bb1f2e30e8c2fb825025ffc353d68988a2afc0fb83632e064c2",
+      "bytes": 38361
+    },
+    {
+      "path": "examples/synthetic_walkthrough.py",
+      "sha256": "d5df0a147a001e5bdca8b0576fede323d3dc011dd3e0bc2d39b73ff5de8e125a",
+      "bytes": 3505
+    },
+    {
+      "path": "extract_poses.py",
+      "sha256": "3b95338220c68c9eb5232f2c07b4525ef6866efb5d2a5a2732506be8a4083e1b",
+      "bytes": 9355
+    },
+    {
+      "path": "learn_exercise.py",
+      "sha256": "465d6caadd5932503741ea94b7b51a7948b1b510a1e22fc2eba5a232983e0ceb",
+      "bytes": 11425
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "e62528f1c83b62602d6e5eb383baa00bd50888255fc70224048b3268f97f2a26",
+      "bytes": 80
+    },
+    {
+      "path": "src/__init__.py",
+      "sha256": "a62751e5d1c029c18205c39d400ff9f93bacdcf6ecdaa8973c6f80597e4d7616",
+      "bytes": 97
+    },
+    {
+      "path": "src/feedback_generator.py",
+      "sha256": "6b3e2dddb4f086edaf7587407da1f1f7fd9664c27ca7672f0d485c34f5be61e8",
+      "bytes": 14732
+    },
+    {
+      "path": "src/json_exporter.py",
+      "sha256": "9a2229ae3c0fc16916e76d4a7027ac99c5a839bc7e43c32ccae00aff8ae2e1e0",
+      "bytes": 15583
+    },
+    {
+      "path": "src/metric_calculator.py",
+      "sha256": "6266f90035c714d697411a4f024f1eea9ab1ff12aab8b6a6696c4b0b7e99119b",
+      "bytes": 28049
+    },
+    {
+      "path": "src/pose_frame.py",
+      "sha256": "8fabf80da464a9768b7ec7f0fb54fd9f3a58860aa0ca19578687405a86b7dd3e",
+      "bytes": 13424
+    },
+    {
+      "path": "src/rep_segmenter.py",
+      "sha256": "6cad830386342b114cd217c9d7e248aafe8552e4a7f48942d403d48f95205f55",
+      "bytes": 14939
+    },
+    {
+      "path": "src/signal_analyzer.py",
+      "sha256": "3f6adaf42b1da9e76f9c8b0a7a5d1027377aa60f49e3946f902147b48ffe9d95",
+      "bytes": 20865
+    },
+    {
+      "path": "src/threshold_learner.py",
+      "sha256": "f1458c83f0e5b38922f12e35c09634514e191a4884624f04a74d0afe5f5d009c",
+      "bytes": 29793
+    },
+    {
+      "path": "src/video_processor.py",
+      "sha256": "4dcb2414c1eb61266bcb0f73c7d680406c894a0819a3aab63c347ff74da9d371",
+      "bytes": 7423
+    },
+    {
+      "path": "tests/test_pipeline.py",
+      "sha256": "367d0d0d1ee72b68630bd21d6ab5b7b10ab5787020cb50d81b446b51748bbcf6",
+      "bytes": 4604
+    }
+  ]
+}
